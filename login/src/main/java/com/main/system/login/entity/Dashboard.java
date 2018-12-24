@@ -41,7 +41,6 @@ public class Dashboard {
 		         String COB_name = rs.getString("COB_name");
 		         String app_name = rs.getString("app_name");
 
-		         //Display values
 		         System.out.print("ID: " + id);
 		        
 		         System.out.print(", COB_name: " + COB_name);
