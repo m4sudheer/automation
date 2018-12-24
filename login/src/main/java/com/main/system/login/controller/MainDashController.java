@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.main.system.login.services.LoginService;
+import com.main.system.login.services.MainDashService;
 
 @Controller
 @SessionAttributes("username")
 public class MainDashController {
 	@Autowired
-	LoginService loginService;
+	MainDashService dashService;
 
 	@RequestMapping(value = "/main-dashboard", method = RequestMethod.GET)
 	public String getMainDashBoard(@RequestParam String COB, ModelMap map) {
@@ -26,6 +27,7 @@ public class MainDashController {
 
 	@RequestMapping(value = "/sub-dashboard", method = RequestMethod.GET)
 	public String getSubDashBoard(ModelMap map) {
+		dashService.getDataFromDB();
 		String username = (String) map.get("username");
 		map.put("username", username);
 		return "main-dashboard";
